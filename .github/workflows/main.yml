@@ -33,7 +33,3 @@ jobs:
         with:
           branch: ${{ steps.vars.outputs.branch }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-
-      # - name: Check for Command
-      #   run: echo "test bug"
-      #   if: github.event.label.name == 'bug'
