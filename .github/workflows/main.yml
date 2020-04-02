@@ -10,6 +10,8 @@ jobs:
       - name: Check for Command
         run: |
           echo test >> b.txt
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git add b.txt
           git commit -m "b.txt"
           git push
