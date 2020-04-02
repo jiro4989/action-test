@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - run: echo $GITHUB_REF
       - name: Check for Command
         run: |
           echo test >> b.txt
