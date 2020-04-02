@@ -28,11 +28,11 @@ jobs:
           git add b.txt
           git commit -m "b.txt"
         if: github.event.label.name == 'toc'
-      # - name: Git push
-      #   uses: ad-m/github-push-action@v0.5.0
-      #   with:
-      #     branch: 
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Git push
+        uses: ad-m/github-push-action@v0.5.0
+        with:
+          branch: ${{ steps.vars.outputs.branch }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       # - name: Check for Command
       #   run: echo "test bug"
