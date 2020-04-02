@@ -1,0 +1,24 @@
+on:
+  pull_request_review_comment:
+    types: [created]
+
+name: Issue Comments
+jobs:
+  check_comments:
+    name: Check comments for /test
+      steps:
+        - name: Check for Command
+          id: command
+          uses: xt0rted/slash-command-action@v1
+          continue-on-error: true
+          with:
+            repo-token: ${{ secrets.GITHUB_TOKEN }}
+            command: toc
+            reaction: "true"
+            reaction-type: "eyes"
+            allow-edits: "false"
+            permission-level: admin
+        - run: echo "Runs on all /toc commands"
+          if: steps.command.outputs.toc
+        - run: echo "Runs on all /create commands"
+          if: steps.command.outputs.create
