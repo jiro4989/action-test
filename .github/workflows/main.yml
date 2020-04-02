@@ -15,8 +15,11 @@ jobs:
           git config --local user.name "GitHub Action"
           git add b.txt
           git commit -m "b.txt"
-          git push
         if: github.event.label.name == 'toc'
-      - name: Check for Command
-        run: echo "test bug"
-        if: github.event.label.name == 'bug'
+      - name: Git push
+        uses: ad-m/github-push-action@v0.5.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Check for Command
+      #   run: echo "test bug"
+      #   if: github.event.label.name == 'bug'
