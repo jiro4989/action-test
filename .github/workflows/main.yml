@@ -17,6 +17,7 @@ jobs:
         run: echo ::set-output name=branch::${GITHUB_REF:11}
       - run: echo ${{ steps.vars.outputs.branch }}
       - run: echo $GITHUB_REF
+      - run: echo $GITHUB_HEAD_REF
       - run: echo ${{ github.context.payload.pull_request.head.ref }}
       - run: echo ${{ github.context }}
       - name: Check for Command
@@ -30,5 +31,5 @@ jobs:
       - name: Git push
         uses: ad-m/github-push-action@v0.5.0
         with:
-          branch: ${{ steps.vars.outputs.branch }}
+          branch: $GITHUB_HEAD_REF
           github_token: ${{ secrets.GITHUB_TOKEN }}
