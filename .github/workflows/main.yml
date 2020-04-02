@@ -8,7 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check for Command
-        run: echo "Runs on all toc commands"
+        run: |
+          echo test >> b.txt
+          git add b.txt
+          git commit -m "b.txt"
+          git push
         if: github.event.label.name == 'toc'
       - name: Check for Command
         run: echo "test bug"
