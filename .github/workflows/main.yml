@@ -13,6 +13,10 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
+      - name: Set output
+        id: vars
+        run: echo ::set-output name=branch::${GITHUB_REF:10}
+      - run: echo ${{ steps.vars.outputs.branch }}
       - run: echo $GITHUB_REF
       - run: echo ${{ github.context.payload.pull_request.head.ref }}
       - run: echo ${{ github.context }}
